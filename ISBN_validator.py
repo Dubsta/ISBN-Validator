@@ -1,20 +1,12 @@
-Trying to make some chanegs using git.
-
-
 '''
- ibsn validator
-
+ISBN validator
+by Michael Atkinson
 Reddit daily challenge #197
 
-Write a function that can return True if a nubmer is a valid ibsn.
-
-*To do this.
-- Multiply by factor of 10 decrementing each time.
-- add result to total
--after loop finished total % 11--> if 0 True else False
-
 '''
-import re
+
+
+\import re
 
 print "\n"*2
 
@@ -23,6 +15,7 @@ isbn = raw_input()
 isbn = isbn.replace("-","") 	# remove -
 type1 = re.compile(r"^\d{10}$") # 10 digit
 type2 = re.compile(r"^\d{9}X$") # 9 digit with X
+
 
 if type1.match(isbn) or type2.match(isbn):
 	factor = len(isbn)
