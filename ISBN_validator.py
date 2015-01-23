@@ -37,10 +37,12 @@ if type10.match(isbn) or type10x.match(isbn):
 elif type13.match(isbn):
 	print "type 13" #debugging
 	total = 0
+	oddEven = 1
 	for digit in isbn:
 		digit = int(digit)
-		if digit.index % 2 == 0: #needs to check place in string not actual digit.
+		if oddEven % 2 == 0:
 			digit = digit * 3
+		oddEven += 1
 		total += digit
 		print digit #debugging
 	if total % 10 == 0 :
