@@ -5,7 +5,6 @@ Reddit daily challenge #197
 
 '''
 
-
 import re
 
 print "\n"*2
@@ -20,8 +19,7 @@ type13 = re.compile(r"^\d{13}$") # 13 digit
 success = "ISBN is valid!"
 fail = "ISBN is invalid."
 
-if type10.match(isbn) or type10x.match(isbn):
-	print "type 10" #debugging
+if type10.match(isbn) or type10x.match(isbn): #10 digit
 	factor = len(isbn)
 	total = 0
 	for digit in isbn:
@@ -34,25 +32,20 @@ if type10.match(isbn) or type10x.match(isbn):
 	else:
 		print fail
 
-elif type13.match(isbn):
-	print "type 13" #debugging
+elif type13.match(isbn): #13 digit
 	total = 0
-	oddEven = 1
+	counter = 1
 	for digit in isbn:
 		digit = int(digit)
-		if oddEven % 2 == 0:
+		if counter % 2 == 0:
 			digit = digit * 3
-		oddEven += 1
+		counter += 1
 		total += digit
-		print digit #debugging
 	if total % 10 == 0 :
 		print success
 	else:
 		print fail
-
-
-else:
+else:  #neither 10 nor 13 digits
 	print fail
-
 
 print "\n"*2
