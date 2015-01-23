@@ -6,18 +6,22 @@ Reddit daily challenge #197
 '''
 
 
-\import re
+import re
 
 print "\n"*2
 
-print "What is your 10 digit ISBN?"
+print "What is your ISBN?"
 isbn = raw_input()
 isbn = isbn.replace("-","") 	# remove -
-type1 = re.compile(r"^\d{10}$") # 10 digit
-type2 = re.compile(r"^\d{9}X$") # 9 digit with X
+type10 = re.compile(r"^\d{10}$") # 10 digit
+type10x = re.compile(r"^\d{9}X$") # 9 digit with X
+type13 = re.compile(r"^\d{13}$") # 13 digit
 
+success = "ISBN is valid!"
+fail = "ISBN is invalid."
 
-if type1.match(isbn) or type2.match(isbn):
+if type10.match(isbn) or type10x.match(isbn):
+	print "type 10" #debugging
 	factor = len(isbn)
 	total = 0
 	for digit in isbn:
@@ -26,11 +30,27 @@ if type1.match(isbn) or type2.match(isbn):
 		total += (int(digit)*factor)
 		factor -= 1
 	if total % 11 == 0 :
-		print "ISBN looks good!"
+		print success
 	else:
-		print "ISBN seems bad."
+		print fail
+
+elif type13.match(isbn):
+	print "type 13" #debugging
+	total = 0
+	for digit in isbn:
+		digit = int(digit)
+		if digit.index % 2 == 0: #needs to check place in string not actual digit.
+			digit = digit * 3
+		total += digit
+		print digit #debugging
+	if total % 10 == 0 :
+		print success
+	else:
+		print fail
+
+
 else:
-	print "Please enter a valid 10 digit ISBN."
+	print fail
 
 
 print "\n"*2
