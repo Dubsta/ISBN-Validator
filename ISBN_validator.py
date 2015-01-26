@@ -1,8 +1,7 @@
 '''
 ISBN validator
 by Michael Atkinson
-Reddit daily challenge #197
-
+r/DailyProgrammer challenge #197:Easy
 '''
 
 import re
